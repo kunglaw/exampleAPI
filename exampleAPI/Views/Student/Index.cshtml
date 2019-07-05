@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<div>
+    <div class="container">
+        <a href="/student/create" class="btn btn-primary pull-right"> Create </a>
+        <div class="clearfix"></div>
+        <br />
+        <table class="table table-bordered">
+            <thead>
+                <th> ID </th>
+                <th> Name </th>
+                <th> Gender </th>
+                <th> Address </th>
+                <th> Action </th>
+            </thead>
+            <tbody>
+                @foreach (var student in ViewBag.students)
+                {
+                    <tr>
+                        <td>@student.id</td>
+                        <td>@student.name</td>
+                        <td>@student.gender</td>
+                        <td>@student.address</td>
+                        <td>
+                            <a class="btn btn-primary btn-xs" href="/student/edit/@student.id"> Edit </a>
+                            <form class="pull-right" action="/student/delete/@student.id" method="post" onsubmit="confirm('are you sure want to delete @student.name ')">
+                                <button type="submit" class="btn btn-xs btn-danger" > Delete </button>
+                            </form>
+                            
+                            
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
